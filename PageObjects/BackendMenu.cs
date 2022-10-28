@@ -7,6 +7,7 @@ namespace ContractCreator
         public IWebDriver Driver { get; set; }
         public Interactions Interaction { get; set; }
         public WebElements RentalMainMenuButton => new(Driver, By.Id("voceMenu_rentals"));
+        public WebElements BookingMenuButton => new(Driver, By.Id("voceMenu_booking"));        
         public WebElements FleetMainMenuButton => new(Driver, By.Id("voceMenu_fleet"));
         public WebElements SparePartsMenuButton => new(Driver, By.Id("voceMenu_spare_part"));
         public WebElements Overlay => new(Driver, By.ClassName("blockOverlay"), 2);
