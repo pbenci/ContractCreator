@@ -6,8 +6,6 @@ namespace ContractCreator
     [Parallelizable(ParallelScope.Fixtures)]
     public class BookingTests : BaseTests
     {
-        private BookingPage BookingPage { get; set; }
-
         [SetUp]
         public void SparePartsTestsSetup()
         {
@@ -18,6 +16,7 @@ namespace ContractCreator
         [Test, Retry(5), Category("Smoke"), TestCase(TestName = "Backend user with right username and pwd can login")]
         public void BackendUserCanLoginWithRightData()
         {
+            BookingPage.SelectCustomer();
             Thread.Sleep(5000);
         }
     }
