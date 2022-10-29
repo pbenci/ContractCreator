@@ -1,5 +1,4 @@
 ﻿using OpenQA.Selenium;
-using System;
 using System.Threading;
 
 namespace ContractCreator
@@ -17,6 +16,12 @@ namespace ContractCreator
         private WebElements AddNewEquipmentButton => new(Driver, By.CssSelector("#form-booking-items > div > div > div > div > div > span:nth-child(1)"));
         private WebElements AddNewEquipmentFromDatepicker => new(Driver, By.XPath($"//*[@id=\"advSearch_tab_4_date_dal\"]"));
         private WebElements AddNewEquipmentToDatepicker => new(Driver, By.XPath($"//*[@id=\"advSearch_tab_4_date_al\"]"));
+        private WebElements AddNewEquipmentModelDropdown => new(Driver, By.Id("advSearch_tab_4_fleet_subcategory_id_chosen"));
+        private WebElements AddNewEquipmentModelDropdownSearchField => new(Driver, By.XPath("//*[@id=\"advSearch_tab_4_fleet_subcategory_id_chosen\"]/div/div/input"));
+        private WebElements NewEquipmentModelDropdownSearchResult => new(Driver, By.CssSelector("#advSearch_tab_4_fleet_subcategory_id_chosen > div > ul > li:nth-child(2)"));
+        private WebElements NewEquipmentApplyFiltersButton => new(Driver, By.CssSelector("#crud_filter_form_tab_4 > div.crud_search_action.p-b-sm.hidden-xs > div > div > div.col-lg-2.hidden-xs > div > button"));
+        private WebElements NewEquipmentQuantityField => new(Driver, By.CssSelector("#table-tab_4 > tbody > tr > td.clickable.dt-td-nowrap.dt-right.inputable-td > div.crud_dt_value > div > input"));
+        private WebElements NewEquipmentConfirmButton => new(Driver, By.CssSelector("#content-tab_4 > div:nth-child(2) > div.row.m-0 > div > a"));
 
         public BookingPage(IWebDriver Driver) : base(Driver)
         {
@@ -60,13 +65,24 @@ namespace ContractCreator
             Wait.ForElementToBeVisible(AddNewEquipmentButton);
             Interaction.Click(AddNewEquipmentButton.Element);
             Thread.Sleep(1000);
-            SelectFromAndDate();
+            SelectFromAndToDate();
+            SelectModel();
         }
 
-        private void SelectFromAndDate()
+        private void SelectFromAndToDate()
         {
             Interaction.Click(AddNewEquipmentFromDatepicker.Element);
             Interaction.Click(AddNewEquipmentToDatepicker.Element);
+        }
+
+        private void SelectModel()
+        {
+            Interaction.Click(AddNewEquipmentModelDropdown.Element);
+            Interaction.Write(AddNewEquipmentModelDropdownSearchField.Element, "CAT 300.9");
+            Interaction.Click(NewEquipmentModelDropdownSearchResult.Element);
+            Interaction.Click(NewEquipmentApplyFiltersButton.Element);
+            Interaction.Write(NewEquipmentQuantityField.Element, "1");
+            Interaction.Click(NewEquipmentConfirmButton.Element);            
         }
     }
 }
