@@ -13,6 +13,7 @@ namespace ContractCreator
         private WebElements JobsiteDropdownSearchResult => new(Driver, By.CssSelector("#booking_customer_customer_job_site_id_chosen > div > ul > li:nth-child(2)"));
         private WebElements FinancialBranchDropdown => new(Driver, By.Id("booking_customer_branch_id_chosen"));
         private WebElements FinancialBranchDropdownSearchResult => new(Driver, By.CssSelector("#booking_customer_branch_id_chosen > div > ul > li:nth-child(17)"));
+        private WebElements AddNewEquipmentButton => new(Driver, By.CssSelector("#form-booking-items > div > div > div > div > div > span:nth-child(1)"));
 
         public BookingPage(IWebDriver Driver) : base(Driver)
         {
@@ -48,6 +49,13 @@ namespace ContractCreator
         {
             Interaction.Click(FinancialBranchDropdown.Element);
             Interaction.Click(FinancialBranchDropdownSearchResult.Element);
+        }
+
+        public void AddNewEquipment()
+        {
+            Wait.ForElementToBeInvisible(AddNewEquipmentButton);
+            Wait.ForElementToBeVisible(AddNewEquipmentButton);
+            Interaction.Click(AddNewEquipmentButton.Element);
         }
     }
 }
