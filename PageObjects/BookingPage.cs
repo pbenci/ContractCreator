@@ -9,6 +9,8 @@ namespace ContractCreator
         private WebElements CustomerDropdown => new(Driver, By.Id("booking_customer_customer_prospect_id_chosen"));
         private WebElements CustomerDropdownSearchField => new(Driver, By.ClassName("ui-autocomplete-input"));
         private WebElements CustomerDropdownSearchResult => new(Driver, By.CssSelector("#booking_customer_customer_prospect_id_chosen > div > ul > li:nth-child(2)"));
+        private WebElements JobsiteDropdown => new(Driver, By.Id("booking_customer_customer_job_site_id_chosen"));
+        private WebElements JobsiteDropdownSearchResult => new(Driver, By.CssSelector("#booking_customer_customer_job_site_id_chosen > div > ul > li:nth-child(2)"));
 
         public BookingPage(IWebDriver Driver) : base(Driver)
         {
@@ -32,6 +34,12 @@ namespace ContractCreator
             Interaction.Click(CustomerDropdown.Element);
             Interaction.Write(CustomerDropdownSearchField.Element, "00000005");
             Interaction.Click(CustomerDropdownSearchResult.Element);
+        }
+
+        public void SelectJobsite()
+        {
+            Interaction.Click(JobsiteDropdown.Element);
+            Interaction.Click(JobsiteDropdownSearchResult.Element);
         }
     }
 }

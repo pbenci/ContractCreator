@@ -17,6 +17,7 @@ namespace ContractCreator
         public void BackendUserCanLoginWithRightData()
         {
             BookingPage.SelectCustomer();
+            BookingPage.SelectJobsite();
             Thread.Sleep(5000);
         }
     }
