@@ -11,6 +11,8 @@ namespace ContractCreator
         private WebElements CustomerDropdownSearchResult => new(Driver, By.CssSelector("#booking_customer_customer_prospect_id_chosen > div > ul > li:nth-child(2)"));
         private WebElements JobsiteDropdown => new(Driver, By.Id("booking_customer_customer_job_site_id_chosen"));
         private WebElements JobsiteDropdownSearchResult => new(Driver, By.CssSelector("#booking_customer_customer_job_site_id_chosen > div > ul > li:nth-child(2)"));
+        private WebElements FinancialBranchDropdown => new(Driver, By.Id("booking_customer_branch_id_chosen"));
+        private WebElements FinancialBranchDropdownSearchResult => new(Driver, By.CssSelector("#booking_customer_branch_id_chosen > div > ul > li:nth-child(17)"));
 
         public BookingPage(IWebDriver Driver) : base(Driver)
         {
@@ -40,6 +42,12 @@ namespace ContractCreator
         {
             Interaction.Click(JobsiteDropdown.Element);
             Interaction.Click(JobsiteDropdownSearchResult.Element);
+        }
+
+        public void SelectFinancialBranch()
+        {
+            Interaction.Click(FinancialBranchDropdown.Element);
+            Interaction.Click(FinancialBranchDropdownSearchResult.Element);
         }
     }
 }

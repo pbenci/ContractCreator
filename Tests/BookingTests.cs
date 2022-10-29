@@ -18,6 +18,7 @@ namespace ContractCreator
         {
             BookingPage.SelectCustomer();
             BookingPage.SelectJobsite();
+            BookingPage.SelectFinancialBranch();
             Thread.Sleep(5000);
         }
     }
