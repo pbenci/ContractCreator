@@ -71,8 +71,8 @@ namespace ContractCreator
 
         private void SelectFromAndToDate()
         {
-            Interaction.Click(AddNewEquipmentFromDatepicker.Element);
-            Interaction.Click(AddNewEquipmentToDatepicker.Element);
+            ((IJavaScriptExecutor)Driver).ExecuteScript("document.getElementsByName('advSearch_tab_4[date_dal]').item(0).value = '03/11/2022';");
+            ((IJavaScriptExecutor)Driver).ExecuteScript("document.getElementsByName('advSearch_tab_4[date_al]').item(0).value = '03/11/2022';");
         }
 
         private void SelectModel()
