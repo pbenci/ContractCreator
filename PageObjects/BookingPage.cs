@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using System;
+using System.Threading;
 
 namespace ContractCreator
 {
@@ -14,6 +15,8 @@ namespace ContractCreator
         private WebElements FinancialBranchDropdown => new(Driver, By.Id("booking_customer_branch_id_chosen"));
         private WebElements FinancialBranchDropdownSearchResult => new(Driver, By.CssSelector("#booking_customer_branch_id_chosen > div > ul > li:nth-child(17)"));
         private WebElements AddNewEquipmentButton => new(Driver, By.CssSelector("#form-booking-items > div > div > div > div > div > span:nth-child(1)"));
+        private WebElements AddNewEquipmentFromDatepicker => new(Driver, By.XPath($"//*[@id=\"advSearch_tab_4_date_dal\"]"));
+        private WebElements AddNewEquipmentToDatepicker => new(Driver, By.XPath($"//*[@id=\"advSearch_tab_4_date_al\"]"));
 
         public BookingPage(IWebDriver Driver) : base(Driver)
         {
@@ -56,6 +59,14 @@ namespace ContractCreator
             Wait.ForElementToBeInvisible(AddNewEquipmentButton);
             Wait.ForElementToBeVisible(AddNewEquipmentButton);
             Interaction.Click(AddNewEquipmentButton.Element);
+            Thread.Sleep(1000);
+            SelectFromAndDate();
+        }
+
+        private void SelectFromAndDate()
+        {
+            Interaction.Click(AddNewEquipmentFromDatepicker.Element);
+            Interaction.Click(AddNewEquipmentToDatepicker.Element);
         }
     }
 }
