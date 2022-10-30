@@ -18,7 +18,7 @@ namespace ContractCreator
 
         public void GoToUrl()
         {
-            Driver.Navigate().GoToUrl("https://cgte-it.cdrs-alias2k.com/");
+            Driver.Navigate().GoToUrl(Config.BackendUrl);
         }
 
         public void LoginWithRightData()
