@@ -1,5 +1,4 @@
 using NUnit.Framework;
-using System.Threading;
 
 namespace ContractCreator
 {
@@ -7,20 +6,20 @@ namespace ContractCreator
     public class BookingTests : BaseTests
     {
         [SetUp]
-        public void SparePartsTestsSetup()
+        public void BookingTestsSetup()
         {
             BookingPage = new(Driver);
             LoginPage.LoginWithRightData();
             BookingPage.GoTo();
         }
-        [Test, Retry(5), Category("Smoke"), TestCase(TestName = "Backend user with right username and pwd can login")]
-        public void BackendUserCanLoginWithRightData()
+        [Test, Retry(5), Category("Smoke"), TestCase(TestName = "Backend user can create contract")]
+        public void CanCreateContract()
         {
             BookingPage.SelectCustomer();
             BookingPage.SelectJobsite();
             BookingPage.SelectFinancialBranch();
             BookingPage.AddNewEquipment();
-            Thread.Sleep(5000);
+            BookingPage.ConfirmContract();
         }
     }
 }

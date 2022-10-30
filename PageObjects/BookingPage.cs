@@ -22,6 +22,8 @@ namespace ContractCreator
         private WebElements NewEquipmentApplyFiltersButton => new(Driver, By.CssSelector("#crud_filter_form_tab_4 > div.crud_search_action.p-b-sm.hidden-xs > div > div > div.col-lg-2.hidden-xs > div > button"));
         private WebElements NewEquipmentQuantityField => new(Driver, By.CssSelector("#table-tab_4 > tbody > tr > td.clickable.dt-td-nowrap.dt-right.inputable-td > div.crud_dt_value > div > input"));
         private WebElements NewEquipmentConfirmButton => new(Driver, By.CssSelector("#content-tab_4 > div:nth-child(2) > div.row.m-0 > div > a"));
+        private WebElements DepositAmountField => new(Driver, By.Id("booking_payments-invoicing_deposit"));
+        private WebElements NewContractConfirmButton => new(Driver, By.CssSelector("#booking-process-tab_3 > div:nth-child(9) > div > div > a.btn.btn-md.btn-primary.booking-submit-cta"));
 
         public BookingPage(IWebDriver Driver) : base(Driver)
         {
@@ -64,9 +66,16 @@ namespace ContractCreator
             Wait.ForElementToBeInvisible(AddNewEquipmentButton);
             Wait.ForElementToBeVisible(AddNewEquipmentButton);
             Interaction.Click(AddNewEquipmentButton.Element);
-            Thread.Sleep(1000);
+            Thread.Sleep(1500);
             SelectFromAndToDate();
             SelectModel();
+        }
+
+        public void ConfirmContract()
+        {
+            Interaction.Write(DepositAmountField.Element, "100");
+            Thread.Sleep(1000);
+            Interaction.Click(NewContractConfirmButton.Element);
         }
 
         private void SelectFromAndToDate()
