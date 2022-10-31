@@ -25,7 +25,7 @@ namespace ContractCreator
         [TearDown]
         public void TearDown()
         {
-            Screenshot.Take();
+            //Screenshot.Take();
             Driver.Quit();
         }
     }

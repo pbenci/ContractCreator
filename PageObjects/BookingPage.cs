@@ -63,10 +63,11 @@ namespace ContractCreator
 
         public void AddNewEquipment()
         {
-            Wait.ForElementToBeInvisible(AddNewEquipmentButton);
-            Wait.ForElementToBeVisible(AddNewEquipmentButton);
+            Thread.Sleep(5000);
+            //Wait.ForElementToBeInvisible(AddNewEquipmentButton);
+            //Wait.ForElementToBeVisible(AddNewEquipmentButton);
             Interaction.Click(AddNewEquipmentButton.Element);
-            Thread.Sleep(1500);
+            Thread.Sleep(4000);
             SelectFromAndToDate();
             SelectModel();
         }
@@ -74,7 +75,6 @@ namespace ContractCreator
         public void ConfirmContract()
         {
             Interaction.Write(DepositAmountField.Element, "100");
-            Thread.Sleep(1000);
             Interaction.Click(NewContractConfirmButton.Element);
         }
 
@@ -90,8 +90,10 @@ namespace ContractCreator
             Interaction.Write(AddNewEquipmentModelDropdownSearchField.Element, "CAT 300.9");
             Interaction.Click(NewEquipmentModelDropdownSearchResult.Element);
             Interaction.Click(NewEquipmentApplyFiltersButton.Element);
+            Thread.Sleep(35000);
             Interaction.Write(NewEquipmentQuantityField.Element, "1");
-            Interaction.Click(NewEquipmentConfirmButton.Element);            
+            Interaction.Click(NewEquipmentConfirmButton.Element);
+            Thread.Sleep(35000);
         }
     }
 }

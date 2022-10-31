@@ -3,7 +3,7 @@ using NUnit.Framework;
 namespace ContractCreator
 {
     [Parallelizable(ParallelScope.Fixtures)]
-    public class BookingTests : BaseTests
+    public class BookingTests02 : BaseTests
     {
         [SetUp]
         public void BookingTestsSetup()
