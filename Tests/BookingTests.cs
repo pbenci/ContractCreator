@@ -12,6 +12,7 @@ namespace ContractCreator
             LoginPage.LoginWithRightData();
             BookingPage.GoTo();
         }
+
         [Test, Repeat(1500), Retry(5), Category("Smoke"), TestCase(TestName = "Backend user can create contract")]
         public void CanCreateContract()
         {
