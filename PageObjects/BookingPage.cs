@@ -80,8 +80,8 @@ namespace ContractCreator
 
         private void SelectFromAndToDate()
         {
-            ((IJavaScriptExecutor)Driver).ExecuteScript("document.getElementsByName('advSearch_tab_4[date_dal]').item(0).value = '03/11/2022';");
-            ((IJavaScriptExecutor)Driver).ExecuteScript("document.getElementsByName('advSearch_tab_4[date_al]').item(0).value = '03/11/2022';");
+            ((IJavaScriptExecutor)Driver).ExecuteScript("document.getElementsByName('advSearch_tab_4[date_dal]').item(0).value = '15/11/2022';");
+            ((IJavaScriptExecutor)Driver).ExecuteScript("document.getElementsByName('advSearch_tab_4[date_al]').item(0).value = '03/01/2023';");
         }
 
         private void SelectModel()
