@@ -9,7 +9,7 @@ namespace ContractCreator
     {
         public IWait<IWebDriver> Wait { get; private set; }
         public IWebDriver Driver { get; private set; }
-        public int Timer => 120;
+        public int Timer => 30;
 
         public Waits(IWebDriver Driver)
         {

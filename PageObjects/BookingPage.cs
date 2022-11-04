@@ -1,5 +1,4 @@
 ﻿using OpenQA.Selenium;
-using System.Threading;
 
 namespace ContractCreator
 {
@@ -63,11 +62,9 @@ namespace ContractCreator
 
         public void AddNewEquipment()
         {
-            Thread.Sleep(5000);
-            //Wait.ForElementToBeInvisible(AddNewEquipmentButton);
-            //Wait.ForElementToBeVisible(AddNewEquipmentButton);
+            Wait.ForElementToBeInvisible(AddNewEquipmentButton);
+            Wait.ForElementToBeVisible(AddNewEquipmentButton);
             Interaction.Click(AddNewEquipmentButton.Element);
-            Thread.Sleep(4000);
             SelectFromAndToDate();
             SelectModel();
         }
@@ -81,7 +78,7 @@ namespace ContractCreator
         private void SelectFromAndToDate()
         {
             ((IJavaScriptExecutor)Driver).ExecuteScript("document.getElementsByName('advSearch_tab_4[date_dal]').item(0).value = '15/11/2022';");
-            ((IJavaScriptExecutor)Driver).ExecuteScript("document.getElementsByName('advSearch_tab_4[date_al]').item(0).value = '03/01/2023';");
+            ((IJavaScriptExecutor)Driver).ExecuteScript("document.getElementsByName('advSearch_tab_4[date_al]').item(0).value = '29/12/2022';");
         }
 
         private void SelectModel()
@@ -90,10 +87,8 @@ namespace ContractCreator
             Interaction.Write(AddNewEquipmentModelDropdownSearchField.Element, "CAT 300.9");
             Interaction.Click(NewEquipmentModelDropdownSearchResult.Element);
             Interaction.Click(NewEquipmentApplyFiltersButton.Element);
-            Thread.Sleep(35000);
             Interaction.Write(NewEquipmentQuantityField.Element, "1");
             Interaction.Click(NewEquipmentConfirmButton.Element);
-            Thread.Sleep(35000);
         }
     }
 }
