@@ -14,7 +14,7 @@ namespace ContractCreator
         {
             ChromeOptions chromeOptions = new ChromeOptions();
             chromeOptions.AddUserProfilePreference("profile.default_content_setting_values.images", 2);
-            //chromeOptions.AddArguments("headless", "no-sandbox", "--disable-gpu", "--window-size=1920x1080");
+            chromeOptions.AddArguments("headless", "no-sandbox", "--disable-gpu", "--window-size=1920x1080");
             return new ChromeDriver(OutputDirectory, chromeOptions, TimeSpan.FromSeconds(180));
         }
     }
