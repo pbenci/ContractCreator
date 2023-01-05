@@ -19,7 +19,7 @@ namespace ContractCreator
         private WebElements NewEquipmentQuantityField => new(Driver, By.CssSelector("#table-tab_4 > tbody > tr > td.clickable.dt-td-nowrap.dt-right.inputable-td > div.crud_dt_value > div > input"));
         private WebElements NewEquipmentConfirmButton => new(Driver, By.CssSelector("#content-tab_4 > div:nth-child(2) > div.row.m-0 > div > a"));
         private WebElements DepositAmountField => new(Driver, By.Id("booking_payments-invoicing_deposit"));
-        private WebElements NewContractConfirmButton => new(Driver, By.CssSelector("#booking-process-tab_3 > div:nth-child(9) > div > div > a.btn.btn-md.btn-primary.booking-submit-cta"));
+        private WebElements NewContractConfirmButton => new(Driver, By.CssSelector("#booking-process-tab_3 > div:nth-child(9) > div > div > a:nth-child(3)"));
 
         public BookingPage(IWebDriver Driver) : base(Driver)
         {
@@ -30,9 +30,12 @@ namespace ContractCreator
 
         public void GoTo()
         {
-            if (Overlay.Elements.Count > 0)
+            try
             {
-                Wait.ForElementToBeInvisible(Overlay);
+                WaitForOverlayToDisappear();
+            }
+            catch (NoSuchElementException)
+            {
             }
             RentalMainMenuButton.Element.Click();
             BookingMenuButton.Element.Click();
@@ -76,8 +79,8 @@ namespace ContractCreator
 
         private void SelectFromAndToDate()
         {
-            ((IJavaScriptExecutor)Driver).ExecuteScript("document.getElementsByName('advSearch_tab_4[date_dal]').item(0).value = '23/12/2022';");
-            ((IJavaScriptExecutor)Driver).ExecuteScript("document.getElementsByName('advSearch_tab_4[date_al]').item(0).value = '03/01/2023';");
+            ((IJavaScriptExecutor)Driver).ExecuteScript("document.getElementsByName('advSearch_tab_4[date_dal]').item(0).value = '05/01/2023';");
+            ((IJavaScriptExecutor)Driver).ExecuteScript("document.getElementsByName('advSearch_tab_4[date_al]').item(0).value = '01/02/2023';");
         }
 
         private void SelectModel()
