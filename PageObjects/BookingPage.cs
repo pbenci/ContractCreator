@@ -30,15 +30,9 @@ namespace ContractCreator
 
         public void GoTo()
         {
-            try
-            {
-                WaitForOverlayToDisappear();
-            }
-            catch (NoSuchElementException)
-            {
-            }
             RentalMainMenuButton.Element.Click();
             BookingMenuButton.Element.Click();
+            WaitForOverlayToDisappear();
         }
 
         public void SelectCustomer()
@@ -79,7 +73,7 @@ namespace ContractCreator
 
         private void SelectFromAndToDate()
         {
-            ((IJavaScriptExecutor)Driver).ExecuteScript("document.getElementsByName('advSearch_tab_4[date_dal]').item(0).value = '05/01/2023';");
+            ((IJavaScriptExecutor)Driver).ExecuteScript("document.getElementsByName('advSearch_tab_4[date_dal]').item(0).value = '09/01/2023';");
             ((IJavaScriptExecutor)Driver).ExecuteScript("document.getElementsByName('advSearch_tab_4[date_al]').item(0).value = '01/02/2023';");
         }
 

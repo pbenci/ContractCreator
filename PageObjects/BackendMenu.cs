@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium;
+using System;
 
 namespace ContractCreator
 {
@@ -27,11 +28,30 @@ namespace ContractCreator
 
         public void WaitForOverlayToDisappear()
         {
-            if (Overlay.Elements.Count > 0)
+            try
             {
+                Console.WriteLine("Yeah");
+                Wait.ForElementToExist(Overlay);
                 Wait.ForElementToBeInvisible(Overlay);
             }
+            catch (NoSuchElementException)
+            {
+                Console.WriteLine("Nope");
+            }
         }
+
+        //public void WaitForOverlayToDisappear()
+        //{
+        //    if (Overlay.Elements.Count > 0)
+        //    {
+        //        Console.WriteLine("Yeah");
+        //        Wait.ForElementToBeInvisible(Overlay);
+        //    }
+        //    else
+        //    {
+        //        Console.WriteLine("Nope");
+        //    }
+        //}
 
         public void CloseAllTabs()
         {

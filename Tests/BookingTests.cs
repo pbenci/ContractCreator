@@ -9,11 +9,11 @@ namespace ContractCreator
         public void BookingTestsSetup()
         {
             BookingPage = new(Driver);
-            LoginPage.LoginWithRightData();
+            LoginPage.Login();
             BookingPage.GoTo();
         }
 
-        [Test, Repeat(1500), Retry(5), Category("Smoke"), TestCase(TestName = "Backend user can create contract")]
+        [Test, Repeat(1), Retry(5), Category("Smoke"), TestCase(TestName = "Backend user can create contract")]
         public void CanCreateContract()
         {
             BookingPage.SelectCustomer();
