@@ -24,7 +24,7 @@ namespace ContractCreator
         {
             try {
                 Wait.ForElementToBeInvisible(Overlay);
-            } catch (WebDriverTimeoutException)
+            } catch (WebDriverTimeoutException) {}
         }
     }
 }
