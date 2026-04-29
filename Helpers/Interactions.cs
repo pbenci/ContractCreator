@@ -1,4 +1,4 @@
-﻿using OpenQA.Selenium;
+using OpenQA.Selenium;
 
 namespace ContractCreator
 {
@@ -6,23 +6,6 @@ namespace ContractCreator
     {
         public IWebDriver Driver { get; private set; }
         public Waits Wait { get; private set; }
-        public int LoadingOverlay { get; private set; }
-        public string ActiveTabId
-        {
-            get
-            {
-                if (Driver.FindElement(By.Id("tab-header")).FindElements(By.ClassName("active")).Count > 0)
-                {
-                    return Driver.FindElement(By.Id("tab-header")).FindElement(By.ClassName("active")).GetAttribute("id");
-                }
-                else
-                {
-                    return "";
-                }
-            }
-        }
-
-        public WebElements ProcessingOverlay => new(Driver, By.Id(string.Format($"table-{ActiveTabId}_processing")));
 
         public Interactions(IWebDriver Driver)
         {
@@ -30,30 +13,26 @@ namespace ContractCreator
             Wait = new Waits(Driver);
         }
 
-        public void ScrollTo(IWebElement Element)
+        public void ScrollTo(IWebElement element)
         {
-            ((IJavaScriptExecutor)Driver).ExecuteScript("arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'})", Element);
+            ((IJavaScriptExecutor)Driver).ExecuteScript("arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'})", element);
         }
 
-        public void Click(IWebElement Element)
+        public void Click(By locator)
         {
-            Wait.ForElementToBeClickable(Element);
-            ScrollTo(Element);
-            Element.Click();
+            Wait.ForElementToBeClickable(locator);
+            IWebElement element = Driver.FindElement(locator);
+            ScrollTo(element);
+            element.Click();
         }
 
-        public void Write(IWebElement Element, string Input)
+        public void Write(By locator, string input)
         {
-            Wait.ForElementToBeClickable(Element);
-            ScrollTo(Element);
-            Element.Clear();
-            Element.SendKeys(Input);
-        }
-
-        public void SwitchCrudPage(IWebElement Element)
-        {
-            Element.Click();
-            Wait.ForElementToBeInvisible(ProcessingOverlay);
+            Wait.ForElementToExist(locator);
+            IWebElement element = Driver.FindElement(locator);
+            ScrollTo(element);
+            element.Clear();
+            element.SendKeys(input);
         }
     }
 }
