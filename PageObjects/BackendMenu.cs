@@ -21,14 +21,14 @@ namespace ContractCreator
         }
 
         public void WaitForOverlayToDisappear()
+        {
+            try 
             {
-                try 
-                    {
-                    Wait.ForElementToBeInvisible(Overlay);
-                    } 
-                catch (WebDriverTimeoutException) 
-                    {
-                    }
+                Wait.ForElementToBeInvisible(Overlay);
+            } 
+            catch (WebDriverTimeoutException) 
+            {
             }
+        }
     }
 }
