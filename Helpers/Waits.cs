@@ -1,4 +1,4 @@
-﻿using OpenQA.Selenium;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using System;
 using ExpectedConditions = SeleniumExtras.WaitHelpers.ExpectedConditions;
@@ -20,27 +20,27 @@ namespace ContractCreator
 
         public void ForPageToBeLoaded()
         {
-            Wait.Until(Driver => ((IJavaScriptExecutor)Driver).ExecuteScript("return document.readyState").Equals("complete"));
+            Wait.Until(d => ((IJavaScriptExecutor)d).ExecuteScript("return document.readyState").Equals("complete"));
         }
 
-        public void ForElementToBeClickable(IWebElement Element)
+        public void ForElementToBeClickable(By locator)
         {
-            Wait.Until(ExpectedConditions.ElementToBeClickable(Element));
+            Wait.Until(ExpectedConditions.ElementToBeClickable(locator));
         }
 
-        public void ForElementToExist(WebElements Element)
+        public void ForElementToExist(By locator)
         {
-            Wait.Until(ExpectedConditions.ElementExists(Element.Locator));
+            Wait.Until(ExpectedConditions.ElementExists(locator));
         }
 
-        public void ForElementToBeInvisible(WebElements Element)
+        public void ForElementToBeInvisible(By locator)
         {
-            Wait.Until(ExpectedConditions.InvisibilityOfElementLocated(Element.Locator));
+            Wait.Until(ExpectedConditions.InvisibilityOfElementLocated(locator));
         }
 
-        public void ForElementToBeVisible(WebElements Element)
+        public void ForElementToBeVisible(By locator)
         {
-            Wait.Until(ExpectedConditions.ElementIsVisible(Element.Locator));
+            Wait.Until(ExpectedConditions.ElementIsVisible(locator));
         }
     }
 }
